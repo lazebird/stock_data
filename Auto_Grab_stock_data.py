@@ -56,7 +56,7 @@ def a_all_date():
 
 
 # 获取股票数据
-def http_get_stock_data(secid, limit=365):
+def http_get_stock_data(secid, limit=1):
     url = "https://push2his.eastmoney.com/api/qt/stock/kline/get"
     params = {
         "cb": "jQuery351043472769495360547_1716288724686",
@@ -129,7 +129,7 @@ if __name__ == "__main__":
     total_stocks = len(stocks)
 
     # 获取最后交易的日期
-    Stock_date_json = http_get_stock_data(f"0.000001", limit=1)
+    Stock_date_json = http_get_stock_data(f"0.000001")
     json_last_date = extract_last_date(Stock_date_json)
     # 转换日期格式为 YYYYMMDD
     Stock_date_time = json_last_date.replace("-", "")
